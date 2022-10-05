@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=0.75, maximum-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"/>
+
+        <style>
+            body {
+                background-color: #EFEFEF;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            h1 {
+                font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+                margin-bottom: 0.5rem;
+            }
+
+            #main {
+                align-content: center;
+                margin: 3rem auto;
+                vertical-align: top;
+                width: 450px;
+            }
+
+            #sketch {
+                background-color: #E2E2DD;
+                border-radius: 4px;
+                border: 1px solid #CCC;
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
+                padding: 20px;
+            }
+
+            summary {
+                margin-bottom: 1.5rem;
+            }
+
+            code {
+                background-color: #ead2d1;
+                border-radius: .25rem;
+                font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+                font-size: .8rem;
+                padding: 0 .25rem;
+            }
+        </style>
+    </head>
+
+    <script>
+        let canvas, ctx;
+        let w, h;
+        let stroke_w = 10;
+        let stroke_h = 10;
+        let whitespace = 10;
+
+        function debounced(f, delay) {
+            var timeoutId = setTimeout(f, delay);
+            return function() {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(f, delay);
+            }
+        }
+
+        function getFillColor(){
+            if(Math.random(0,1) * 100 > 50){
+                return "#373333";
+            }
+            return "#FFF";
+        }
+
+        function drawBars(){
+            for(let j=0; j < w; j += stroke_w + whitespace) {
+                for(let i=0; i < h; i += stroke_h) {
+
+                    ctx.beginPath()
+                    ctx.fillStyle = getFillColor();
+
+                    ctx.fillRect(
+                        j, 
+                        i, 
+                        stroke_w, 
+                        stroke_h
+                    )
+                }
+            }
+        }
+
+        function init() {
+            canvas = document.getElementById('sketch');
+            ctx = canvas.getContext('2d');
+            w = canvas.width;
+            h = canvas.height;
+
+            drawBars();
+            canvas.addEventListener("mousemove", debounced(drawBars, 5));
+        }
+
+        document.addEventListener('DOMContentLoaded', init)
+    </script>
+    
+    <body>
+        <section id="main">
+            <h1>Geometric Anomalies</h1>
+            <summary>Exploring simple generative art with vanilla JS and <code>&lt;canvas&gt;</code>.</summary>
+            <canvas id="sketch" width="400" height="400"></canvas>
+        </section>
+    </body>
+
+</html>
