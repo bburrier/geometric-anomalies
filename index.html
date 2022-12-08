@@ -2,10 +2,11 @@
     <head>
         <meta name="viewport" content="initial-scale=0.75, maximum-scale=1">
         <link href="static/css/index.css" rel="stylesheet"/>
+        <link rel="icon" type="image/png" href="static/images/favicon.ico">
     </head>
 
     <script>
-        function Sketch(canvasId, params) {
+        function BlockSketch(canvasId, params) {
             let canvas, ctx;
             let w, h;
 
@@ -35,35 +36,29 @@
             function drawBars(){
                 for(let j=0; j < w; j += params.strokeWidth + params.whitespace) {
                     for(let i=0; i < h; i += params.strokeHeight) {
-
                         ctx.beginPath()
                         ctx.fillStyle = getFillColor();
-
-                        ctx.fillRect(
-                            j, 
-                            i, 
-                            params.strokeWidth, 
-                            params.strokeHeight
-                        )
+                        ctx.fillRect(j, i, params.strokeWidth, params.strokeHeight);
                     }
                 }
             }
 
             draw();
+
             return {
                 draw,
             };
         }
 
         function init() {
-            let sketch1 = Sketch("sketch-1", {
+            let sketch1 = BlockSketch("sketch-1", {
                 strokeWidth: 24,
                 strokeHeight: 24,
                 whitespace: 0,
                 fillColors: ["#333", "#0a4a90",]
             });
 
-            let sketch2 = Sketch("sketch-2", {
+            let sketch2 = BlockSketch("sketch-2", {
                 strokeWidth: 10,
                 strokeHeight: 10,
                 whitespace: 10,
@@ -86,6 +81,12 @@
             <canvas class="sketch" id="sketch-1" width="300" height="300"></canvas>
             <canvas class="sketch" id="sketch-2" width="300" height="300"></canvas>
         </main>
+        <footer>
+            <a href="https://beauburrier.com">beauburrier.com</a>
+            <a class="github-link" href="https://github.com/bburrier">
+                <img src="static/images/github-mark.png"/>
+            </a>
+        </footer>
     </body>
 
 </html>
