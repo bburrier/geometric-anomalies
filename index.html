@@ -1,55 +1,12 @@
 <html>
     <head>
-        <meta name="viewport" content="initial-scale=0.75, maximum-scale=1">
-        <link href="static/css/index.css" rel="stylesheet"/>
+        <meta name="viewport" content="initial-scale=1">
+        <link href="static/css/index.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="static/images/favicon.ico">
     </head>
 
+    <script src="static/js/sketch.js" type="text/javascript"></script>
     <script>
-        function BlockSketch(canvasId, params) {
-            let canvas, ctx;
-            let w, h;
-
-            function debounced(f, delay) {
-                var timeoutId = setTimeout(f, delay);
-                return function() {
-                    clearTimeout(timeoutId);
-                    timeoutId = setTimeout(f, delay);
-                }
-            }
-
-            function getFillColor(){
-                let fillIndex = Math.floor(Math.random() * params.fillColors.length);
-                return params.fillColors[fillIndex];
-            }
-
-            function draw() {
-                canvas = document.getElementById(canvasId);
-                ctx = canvas.getContext('2d');
-                w = canvas.width;
-                h = canvas.height;
-
-                drawBars()
-                canvas.addEventListener("mousemove", debounced(drawBars, 5));
-            }
-
-            function drawBars(){
-                for(let j=0; j < w; j += params.strokeWidth + params.whitespace) {
-                    for(let i=0; i < h; i += params.strokeHeight) {
-                        ctx.beginPath()
-                        ctx.fillStyle = getFillColor();
-                        ctx.fillRect(j, i, params.strokeWidth, params.strokeHeight);
-                    }
-                }
-            }
-
-            draw();
-
-            return {
-                draw,
-            };
-        }
-
         function init() {
             let sketch1 = BlockSketch("sketch-1", {
                 strokeWidth: 24,
@@ -65,7 +22,6 @@
                 fillColors: ["#373333", "#DDD",]
             });
         }
-
         document.addEventListener('DOMContentLoaded', init)
     </script>
     
