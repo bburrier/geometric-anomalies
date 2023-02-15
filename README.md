@@ -1,6 +1,6 @@
 # Geometric Anomalies
 
-Exploring simple generative art with vanilla JS and `<canvas>`.
+Exploring simple generative art with plain JS and `<canvas>`.
 
 **live:** https://bburrier.github.io/geometric-anomalies/
 

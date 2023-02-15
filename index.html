@@ -1,36 +1,37 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <title>Geometric Anomalies</title>
         <meta name="viewport" content="initial-scale=1">
         <link href="static/css/index.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="static/images/favicon.ico">
+
+        <script src="static/js/sketch.js" type="text/javascript"></script>
+        <script>
+            function init() {
+                let sketch1 = BlockSketch("sketch-1", {
+                    strokeWidth: 24,
+                    strokeHeight: 24,
+                    whitespace: 0,
+                    fillColors: ["#333", "#0a4a90",]
+                });
+
+                let sketch2 = BlockSketch("sketch-2", {
+                    strokeWidth: 10,
+                    strokeHeight: 10,
+                    whitespace: 10,
+                    fillColors: ["#373333", "#DDD",]
+                });
+            }
+            document.addEventListener('DOMContentLoaded', init)
+        </script>
     </head>
-
-    <script src="static/js/sketch.js" type="text/javascript"></script>
-    <script>
-        function init() {
-            let sketch1 = BlockSketch("sketch-1", {
-                strokeWidth: 24,
-                strokeHeight: 24,
-                whitespace: 0,
-                fillColors: ["#333", "#0a4a90",]
-            });
-
-            let sketch2 = BlockSketch("sketch-2", {
-                strokeWidth: 10,
-                strokeHeight: 10,
-                whitespace: 10,
-                fillColors: ["#373333", "#DDD",]
-            });
-        }
-        document.addEventListener('DOMContentLoaded', init)
-    </script>
-    
     <body>
         <main>
             <section id="masthead">
                 <h1>Geometric Anomalies</h1>
                 <summary>
-                    Exploring simple generative art with vanilla JS and <code>&lt;canvas&gt;</code>.
+                    Exploring simple generative art with plain JS and <code>&lt;canvas&gt;</code>.
                 </summary>
             </section>
             
